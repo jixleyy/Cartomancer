@@ -1,6 +1,10 @@
 # Fantasy Map Generator
 
+![cartomancer logo](logo.svg?raw=true "Cartomancer")
+
 Azgaar's _Fantasy Map Generator_ is a free web application that helps fantasy writers, game masters, and cartographers create and edit fantasy maps.
+
+This specific fork, Cartomancer, further optimizes the programs and adds a wealth of new features.
 
 Link: [azgaar.github.io/Fantasy-Map-Generator](https://azgaar.github.io/Fantasy-Map-Generator).
 
