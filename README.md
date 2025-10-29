@@ -1,33 +1,169 @@
-# Fantasy Map Generator
+# Cartomancer - Fantasy Map Generator
 
-![cartomancer logo](logo.svg?raw=true "Cartomancer")
+Cartomancer is a web-based fantasy map generator that allows users to create detailed, customizable fantasy world maps. Built primarily with JavaScript and D3.js, it generates terrain, biomes, rivers, political entities, and cultural features procedurally.
 
-Azgaar's _Fantasy Map Generator_ is a free web application that helps fantasy writers, game masters, and cartographers create and edit fantasy maps.
+## Features
 
-This specific fork, Cartomancer, further optimizes the programs and adds a wealth of new features.
+- **Procedural Generation**: Automatically generates realistic continents, islands, mountain ranges, rivers, and climate zones
+- **Customizable**: Extensive options for adjusting map parameters, styles, and generation rules
+- **Political Systems**: Creates states, provinces, burgs (cities/towns), and cultural regions
+- **Visual Styling**: Multiple style presets and extensive customization options
+- **Export Options**: Export maps as SVG, PNG, GeoJSON, and other formats
+- **Edit Tools**: Modify terrain, move burgs, adjust borders, and customize features
 
-Link: [azgaar.github.io/Fantasy-Map-Generator](https://azgaar.github.io/Fantasy-Map-Generator).
+## Prerequisites
 
-Refer to the [project wiki](https://github.com/Azgaar/Fantasy-Map-Generator/wiki) for guidance. The current progress is tracked in [Trello](https://trello.com/b/7x832DG4/fantasy-map-generator). Some details are covered in my old blog [_Fantasy Maps for fun and glory_](https://azgaar.wordpress.com).
+- Modern web browser (Chrome, Firefox, Edge recommended)
+- Local web server (required due to browser security restrictions)
 
-[![preview](https://github.com/Azgaar/Fantasy-Map-Generator/assets/26469650/9502eae9-92e0-4d0d-9f17-a2ba4a565c01)](https://github.com/Azgaar/Fantasy-Map-Generator/assets/26469650/11a42446-4bd5-4526-9cb1-3ef97c868992)
+## Quick Start
 
-[![preview](https://github.com/Azgaar/Fantasy-Map-Generator/assets/26469650/e751a9e5-7986-4638-b8a9-362395ef7583)](https://github.com/Azgaar/Fantasy-Map-Generator/assets/26469650/e751a9e5-7986-4638-b8a9-362395ef7583)
+### Method 1: Using Python (Recommended)
 
-[![preview](https://github.com/Azgaar/Fantasy-Map-Generator/assets/26469650/b0d0efde-a0d1-4e80-8818-ea3dd83c2323)](https://github.com/Azgaar/Fantasy-Map-Generator/assets/26469650/b0d0efde-a0d1-4e80-8818-ea3dd83c2323)
+```bash
+# Clone or download the repository
+git clone https://github.com/Azgaar/cartomancer.git
 
-Join our [Discord server](https://discordapp.com/invite/X7E84HU) and [Reddit community](https://www.reddit.com/r/FantasyMapGenerator) to share your creations, discuss the Generator, suggest ideas and get the most recent updates.
+# Navigate to the project directory
+cd cartomancer
 
-Contact me via [email](mailto:azgaar.fmg@yandex.com) if you have non-public suggestions. For bug reports please use [GitHub issues](https://github.com/Azgaar/Fantasy-Map-Generator/issues) or _#fmg-bugs_ channel on Discord. If you are facing performance issues, please read [the tips](https://github.com/Azgaar/Fantasy-Map-Generator/wiki/Tips#performance-tips).
+# Start a local web server
+python -m http.server 8000
 
-Pull requests are highly welcomed. The codebase is messy and requires re-design. I will appreciate if you start with minor changes. Check out the [data model](https://github.com/Azgaar/Fantasy-Map-Generator/wiki/Data-model) before contributing.
+# Open your browser and navigate to:
+# http://localhost:8000
+```
 
-You can support the project on [Patreon](https://www.patreon.com/azgaar).
+### Method 2: Using Node.js
 
-_Inspiration:_
+```bash
+# Install http-server globally (if not already installed)
+npm install -g http-server
 
-- Martin O'Leary's [_Generating fantasy maps_](https://mewo2.com/notes/terrain)
+# Navigate to the project directory
+cd cartomancer
 
-- Amit Patel's [_Polygonal Map Generation for Games_](http://www-cs-students.stanford.edu/~amitp/game-programming/polygon-map-generation)
+# Start the server
+http-server -p 8000
 
-- Scott Turner's [_Here Dragons Abound_](https://heredragonsabound.blogspot.com)
+# Open your browser and navigate to:
+# http://localhost:8000
+```
+
+### Method 3: Using PHP
+
+```bash
+# Navigate to the project directory
+cd cartomancer
+
+# Start PHP built-in server
+php -S localhost:8000
+
+# Open your browser and navigate to:
+# http://localhost:8000
+```
+
+## Usage
+
+1. **Generate a New Map**: 
+   - Click "New Map" to generate a random map
+   - Adjust parameters in the options panel before generation
+
+2. **Customize the Map**:
+   - Use the tools panel to modify terrain, add/remove features
+   - Edit political entities, cultures, and religions
+   - Adjust styling in the style editor
+
+3. **Export Your Map**:
+   - Use the "Save" menu to download the map in various formats
+   - Export as image files (PNG, SVG) or data files (GeoJSON, JSON)
+
+## Project Structure
+
+```
+cartomancer/
+├── index.html              # Main HTML file
+├── main.js                 # Core application logic
+├── modules/                # Feature modules
+│   ├── ui/                 # User interface components
+│   ├── renderers/          # Drawing functions
+│   ├── io/                 # Input/output operations
+│   └── *.js                # Generation modules
+├── styles/                 # Style configuration files
+├── images/                 # Texture and icon images
+├── libs/                   # External libraries
+├── heightmaps/             # Predefined heightmap templates
+└── ...
+```
+
+## Development
+
+### Code Organization
+
+- **Main Controller**: `main.js` handles initialization and coordination
+- **Generation Modules**: Individual files in `/modules/` handle specific features (biomes, rivers, states, etc.)
+- **UI Modules**: Files in `/modules/ui/` manage different editor panels
+- **Renderers**: Files in `/modules/renderers/` handle visual representation
+- **Styles**: JSON files in `/styles/` define visual appearance presets
+
+### Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create a Pull Request
+
+## Technical Details
+
+### Generation Pipeline
+
+1. **Heightmap Creation**: Terrain elevation using Voronoi diagrams
+2. **Feature Detection**: Identification of oceans, islands, lakes
+3. **Climate Modeling**: Temperature and precipitation simulation
+4. **Biome Assignment**: Based on climate data
+5. **Hydrology**: River and lake generation
+6. **Political Entities**: States, provinces, and burgs (settlements)
+7. **Cultural Features**: Cultures, religions, emblems
+
+### Data Storage
+
+- Uses IndexedDB for local storage
+- Maps saved in `.map` format (custom text-based format)
+- Style presets stored in JSON format
+- Supports cloud storage integration (Dropbox)
+
+## Troubleshooting
+
+### Common Issues
+
+1. **"Cannot run serverless" Error**:
+   - Make sure you're running a local web server
+   - Opening `index.html` directly in a browser won't work due to CORS restrictions
+
+2. **Performance Issues**:
+   - Reduce the number of map cells in the options
+   - Close unnecessary browser tabs
+   - Use a modern browser with good JavaScript performance
+
+3. **Map Not Loading**:
+   - Clear browser cache and try again
+   - Check browser console for error messages
+   - Ensure all files are present in the project directory
+
+### Browser Support
+
+- Chrome 60+
+- Firefox 55+
+- Edge 79+
+- Safari 12+
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+- Based on the original work by Azgaar
+- Uses D3.js for data visualization
+- Inspired by various fantasy map creation techniques
