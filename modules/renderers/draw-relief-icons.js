@@ -76,22 +76,68 @@ function drawReliefIcons() {
 
   function getVariant(type) {
     switch (type) {
+      // Mountains & terrain
       case "mount":
         return rand(2, 7);
       case "mountSnow":
         return rand(1, 6);
       case "hill":
         return rand(2, 5);
+
+      // Trees
       case "conifer":
-        return 2;
-      case "coniferSnow":
-        return 1;
-      case "swamp":
-        return rand(2, 3);
+      case "spruce":
+      case "fir":
+      case "pine":
+      case "larch":
+        return rand(2, 6);
+      case "deciduous":
+      case "tropicalTree":
+      case "dryTree":
+      case "sclerophyllTree":
+      case "acacia":
+        return rand(4, 10);
+      case "palm":
+        return rand(1, 4);
+      case "mangrove":
+        return rand(4, 8);
+
+      // Shrubs & bushes
+      case "bush":
+      case "shrub":
+      case "coastalShrub":
+      case "dryShrub":
+      case "xericShrub":
+      case "thornTree":
+        return rand(3, 7);
+      case "heath":
+        return rand(2, 5);
+
+      // Grass & ground plants
+      case "grass":
+      case "wildflower":
+      case "alpineFlower":
+      case "waterPlant":
+      case "reed":
+      case "vines":
+      case "moss":
+      case "lichen":
+      case "peatMoss":
+      case "saltGrass":
+        return rand(3, 10);
+
+      // Desert / cactus
       case "cactus":
         return rand(1, 3);
+
+      // Swamp
+      case "swamp":
+        return rand(2, 3);
+
+      // Legacy / default
       case "deadTree":
         return rand(1, 2);
+
       default:
         return 2;
     }
@@ -100,13 +146,11 @@ function drawReliefIcons() {
   function getOldIcon(type) {
     switch (type) {
       case "mountSnow":
-        return "mount";
       case "vulcan":
         return "mount";
       case "coniferSnow":
         return "conifer";
       case "cactus":
-        return "dune";
       case "deadTree":
         return "dune";
       default:
